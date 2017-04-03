@@ -1,0 +1,42 @@
+.login {
+	position: relative;
+    left: 50px;
+    top: 100px;
+    display: block;
+    border: 1px solid black;
+    width: 300px;
+    padding : 4px;
+    float:left;
+}
+.signUp {
+	position: relative;
+ 	left: 50px;
+    top: 60px;
+    display: block;
+    border: 1px solid black;
+    width: 300px;
+    padding : 4px;
+    float:right;
+}
+div.container {
+    width: 100%;
+    border: 1px solid gray;
+}
+
+header, footer {
+    padding: 1em;
+    color: blue;
+    clear: left;
+    text-align: center;
+}
+
+td {
+	padding:2px;
+}
+
+.centerDiv {
+    margin-left: 30px;
+    padding: 1em;
+    overflow: hidden;
+    height : 600px;
+}

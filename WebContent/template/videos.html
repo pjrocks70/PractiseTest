@@ -1,0 +1,80 @@
+<html>
+
+<head>
+<title> Videos </title>
+<style> 
+input[type=text] {
+    width: 130px;
+    box-sizing: border-box;
+    border: 2px solid #ccc;
+    border-radius: 2x;
+    font-size: 10px;
+    background-color: white;
+    background-image: './images/searchicon.png';
+    background-repeat: no-repeat;
+    padding: 6px 12px 6px 24px;
+    -webkit-transition: width 0.4s ease-in-out;
+    transition: width 0.4s ease-in-out;
+}
+
+input[type=text]:focus {
+    width: 70%;
+}
+</style>
+
+</head>
+
+<body style="padding: 10px;">
+
+<div class="container">
+
+<header><h1> Videos </h1></header>
+
+<div class="centerDiv">
+	<div style="float:left;width:20%;height:100%;" >
+		Videos<br>
+		<button data-ng-click = "logOut()" >logout</button>
+	</div>
+	<div style="float:right;width:70%">
+	<select data-ng-model="pagination"  style="float:left;">
+		<option value=10 >10</option>
+		<option value=25 >25</option>
+		<option value=50 >50</option>
+		<option value={{videos.length}} >All</option>
+	</select>
+	<input type="text" data-ng-model="searchText.title" style="float:right" placeholder="Search in title" >
+	</div>
+	<br>
+	<div style="padding:5px;">
+	<table style="width:70%">
+		<tr>
+			<th>#</th>
+			<th>Video</th>
+			<th>Title</th>
+			<th>Channel</th>
+		</tr>
+		<tr data-ng-repeat="video in videos | filter:searchText | limitTo:pagination: currentPage*pagination ">
+			<td>{{$index + 1 }}</td>
+			<td><video class='videoPlayer' preload='metadata' controls>
+			<source data-ng-src='{{video.url}}' type='{{ video.type }}'>
+			</video></td>
+			<td>{{video.title}}</td>
+			<td>{{video.channel}}</td>
+		</tr>
+	</table>
+	</div>
+	
+</div>
+<footer>
+<button data-ng-disabled="currentPage == 0" data-ng-click="currentPage=currentPage-1">
+        Previous
+    </button>
+    {{currentPage+1}}/{{numberOfPages()}}
+    <button data-ng-disabled="currentPage >=videos.length/pagination - 1" data-ng-click="currentPage=currentPage+1">
+        Next
+    </button></footer>
+</div>
+
+</body>
+
+</html>
